@@ -1,6 +1,7 @@
 import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -159,13 +160,14 @@ public class GraphProcessor {
     public List<Point> route(Point start, Point end) throws InvalidAlgorithmParameterException {
         if (!vertices.keySet().contains(start) || !vertices.keySet().contains(end) || start.equals(end) ||
             connected(start, end) == false) {
-            throw new InvalidAlgorithmParameterException("No path between start and end");   
+          throw new InvalidAlgorithmParameterException("No path between start and end");   
         }
 
         Map<Point, Double> distance = new HashMap<>();
         List<Point> path = new ArrayList<>();
         Map<Point, Point> previous = new HashMap<>();
-        PriorityQueue<Point> toExplore = new PriorityQueue<>();
+        Comparator<Point> cp = (a,b) -> (int)(distance.get(a) - distance.get(b));
+        PriorityQueue<Point> toExplore = new PriorityQueue<>(cp);
         Point curr = start;
 
         distance.put(curr, 0.0);
