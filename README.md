@@ -1,4 +1,4 @@
-# Project 6: Route
+# Route
 
 Using Java, I developed my own implementation of a routing service that finds the best route between two cities in the United States. The program represents the US highway network as a graph and calculates routes and distances on this network. Therefore, theoretically, this program could be used to find the best route (series of edges) from a file containing a list of vertices. The program also contains a UI that allows the user to visualize the best route between the two cities on a map of the United States.
 
